@@ -16,11 +16,19 @@ run-php-s1:
 run-php-s2:
 	${DCR_2} php bash
 
+run-yarn-watch-s1:
+	${DCR_1} node yarn watch
+
+run-yarn-watch-s2:
+	${DCR_2} node yarn watch
+
 ps:
 	${DC} ps
 
 init:
+	${DCR_1} node yarn install
 	${DCR_1} php composer install
+	${DCR_2} node yarn install
 	${DCR_2} php composer install
 
 npm-install:
