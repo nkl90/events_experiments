@@ -7,17 +7,21 @@ ifneq (,$(wildcard ./.env.local))
     export
 endif
 DC=docker-compose
-DCR=${DC} run --rm -v ${PWD}/service1:${S1_DOCKER_APP_PATH} -v ${PWD}/service2:${S2_DOCKER_APP_PATH} -w ${S1_DOCKER_APP_PATH} --no-deps
+DCR_1=${DC} run --rm -v ${PWD}/service1:${S1_DOCKER_APP_PATH} -v ${PWD}/service1:${S1_DOCKER_APP_PATH} -w ${S1_DOCKER_APP_PATH} --no-deps
+DCR_2=${DC} run --rm -v ${PWD}/service2:${S2_DOCKER_APP_PATH} -v ${PWD}/service2:${S2_DOCKER_APP_PATH} -w ${S2_DOCKER_APP_PATH} --no-deps
 
-run-php:
-	${DCR} php bash
+run-php-s1:
+	${DCR_1} php bash
+
+run-php-s2:
+	${DCR_2} php bash
 
 ps:
 	${DC} ps
 
 init:
-	${DCR} node npm install
-	${DCR} php composer install
+	${DCR_1} php composer install
+	${DCR_2} php composer install
 
 npm-install:
 	${DCR} node npm install

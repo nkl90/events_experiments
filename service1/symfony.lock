@@ -1,17 +1,4 @@
 {
-    "prooph/event-store-symfony-bundle": {
-        "version": "0.10",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "0.4",
-            "ref": "a989875619b98a288abc2b636a2b5be36b4833d6"
-        },
-        "files": [
-            "config/packages/prooph_event_store.yaml",
-            "src/Command/CreateEventStreamCommand.php"
-        ]
-    },
     "symfony/console": {
         "version": "6.1",
         "recipe": {
