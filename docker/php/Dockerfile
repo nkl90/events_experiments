@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
       libzip-dev \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) zip \
+    && docker-php-ext-install -j$(nproc) pcntl \
     && pecl install xdebug-3.1.4 \
     && docker-php-ext-enable xdebug
 
