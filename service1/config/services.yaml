@@ -22,3 +22,22 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    app_pservice_bus.in_memory_transport:
+        class: GDXbsv\PServiceBus\Transport\InMemoryTransport
+
+    app_pservice_bus.traceable_bus:
+        class: GDXbsv\PServiceBus\Bus\TraceableBus
+
+    app_pservice_bus.bus:
+        class: GDXbsv\PServiceBus\Bus
+        decorates: app_pservice_bus.traceable_bus
+
+    app_pservice_bus.coroutine_bus:
+        class: GDXbsv\PServiceBus\Bus\CoroutineBus
+        decorates: app_pservice_bus.traceable_bus
+
+    app_pservice_bus.consume_bus:
+        class: ConsumeBus
+        decorates: app_pservice_bus.traceable_bus
+
+
